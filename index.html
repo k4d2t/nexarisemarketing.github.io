@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NEXA RISE MARKETING — Agence Communication & Marketing Digital</title>
+  <title>NEXA RISE MARKETING | Agence Communication & Marketing Digital</title>
 
   <!-- Police et icônes -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="shortcut icon" href="Logo/NEXA RISE LOGO N.png" type="image/x-icon">
 
   <style>
     /* ===============================
@@ -128,7 +129,7 @@
     .tile:hover::after{opacity:1}
 
     /* Stats */
-    .hero-stats{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .hero-stats{display:flex;gap:15px;margin-top:25px;flex-wrap:wrap}
     .stat{background:var(--glass);padding:10px;border-radius:10px;min-width:100px;text-align:center;backdrop-filter:blur(4px)}
     .stat .label{font-size:0.85rem;color:var(--muted)}
     .stat .value{font-weight:900;font-size:1.05rem;color:var(--accent)}
@@ -203,9 +204,9 @@
     .testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;min-width:220px}
 
     /* SERVICES & PACKS */
-    .section-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:20px}
-    .services-list{display:grid;gap:12px;margin-top:12px}
-    .service{display:flex;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+    .section-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:90px}
+    .services-list{display:grid;gap:18px;margin-top:15px}
+    .service{display:flex;gap:17px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
     .service .icon{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:grid;place-items:center;color:#041827;font-weight:800}
 
     .packs{margin-top:8px;display:grid;gap:10px}
@@ -269,7 +270,7 @@
       .brand .title{font-size:0.95rem}
       .hero-left h1{font-size:1.05rem}
       .btn{padding:10px 10px}
-      .hero-stats{gap:8px}
+      .hero-stats{gap:10px}
       .input,textarea,select{font-size:0.95rem}
       .pack-illus{width:48px;height:40px}
       .footer-left img{height:36px}
@@ -309,7 +310,6 @@
         <div class="nav-links" role="menubar" aria-label="sections">
           <a href="#accueil">Accueil</a>
           <a href="#services">Services</a>
-          <a href="#portfolio">Portfolio</a>
           <a href="#preuve">Preuves</a>
           <a href="#contact" class="cta-nav">Contact</a>
         </div>
@@ -320,7 +320,6 @@
     <div class="nav-mobile" id="navMobile" aria-hidden="true" role="menu">
       <a href="#accueil" role="menuitem">Accueil</a>
       <a href="#services" role="menuitem">Services</a>
-      <a href="#portfolio" role="menuitem">Portfolio</a>
       <a href="#preuve" role="menuitem">Preuves</a>
       <a href="#contact" role="menuitem">Contact</a>
     </div>
@@ -332,26 +331,26 @@
     <header class="hero">
       <div class="hero-card hero-left tile" data-animate>
         <h1>Nous propulsons les marques africaines avec une touche glacée — design, stratégie, performance.</h1>
+        <br>
         <p class="lead">NEXA RISE MARKETING combine créativité et rigueur data-driven pour booster visibilité et conversions. Simple, transparent, efficace.</p>
-
+<br>
         <div class="hero-cta">
           <!-- BUTTON FIX: now scrolls to contact and focuses the form (see JS comment). -->
           <button class="btn primary" id="cta-start"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Commencer mon projet</button>
           <a class="btn ghost" href="#services"><i class="fa-solid fa-list" aria-hidden="true"></i> Voir nos services</a>
         </div>
-
         <div class="hero-stats" role="list" aria-label="Statistiques rapides">
           <div class="stat tile" data-animate role="listitem">
             <div class="label">Clients</div>
-            <div class="value" id="h-clients" data-target="12">0</div>
+            <div class="value" id="h-clients" data-target="10">0</div>
           </div>
           <div class="stat tile" data-animate role="listitem">
             <div class="label">Projets</div>
-            <div class="value" id="h-projects" data-target="18">0</div>
+            <div class="value" id="h-projects" data-target="3">0</div>
           </div>
           <div class="stat tile" data-animate role="listitem">
             <div class="label">Impressions / mois</div>
-            <div class="value" id="h-impr" data-target="5000">0</div>
+            <div class="value" id="h-impr" data-target="2754">0</div>
           </div>
         </div>
       </div>
@@ -385,21 +384,16 @@
 
           <!-- Lead status: used instead of alert for inline feedback (added) -->
           <div id="lead-status" class="muted small" aria-live="polite" style="margin-top:8px"></div>
-
+<br>
           <div class="small muted" style="margin-top:8px">Vos données resteront confidentielles.</div>
         </form>
       </aside>
     </header>
 
-    <!-- PREUVES -->
+    <!-- PREUVES -->  
     <section class="preuves" id="preuve" aria-labelledby="preuve-title">
-      <div class="preuves-head tile" data-animate style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-        <div>
-          <h2 id="preuve-title">Ils nous font confiance</h2>
-          <p class="muted">Petites entreprises & e-commerces accompagnés avec soin.</p>
-        </div>
 
-        <div class="counters" aria-hidden="false" role="list" aria-label="Compteurs globaux">
+        <!--<div class="counters" aria-hidden="false" role="list" aria-label="Compteurs globaux">
           <div class="counter tile" data-animate role="listitem">
             <div class="counter-label muted">Clients satisfaits</div>
             <div class="num" data-target="12">0</div>
@@ -413,7 +407,7 @@
             <div class="num" data-target="5000">0</div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- CLIENT LOGOS / PHOTOS
            IMPORTANT: pour que les NOMS apparaissent correctement :
@@ -421,47 +415,41 @@
              ou au minimum laisser le texte dans la balise .logo-thumb après l'image.
            - Exemple d'usage fourni ci-dessous.
       -->
+           <br> <h1>Ils nous ont fait confiance</h1>
+           <br>
       <div class="client-logos tile" data-animate>
+       
         <!-- Replace src with your client photos (recommended square images). Caption shows under the image. -->
         <div class="logo-thumb">
-          <img class="client-photo" src="clients/john.jpg" alt="John" onerror="this.style.display='none'">
-          <span class="caption">John</span>
+          <img class="client-photo" src="clients/john.jpg" alt="Idrissa" onerror="this.style.display='none'">
+          <span class="caption">Idrissa B.</span>
         </div>
 
         <div class="logo-thumb">
           <img class="client-photo" src="clients/loic.jpg" alt="Loïc" onerror="this.style.display='none'">
-          <span class="caption">Loïc</span>
+          <span class="caption">Loïc B.</span>
         </div>
 
         <div class="logo-thumb">
           <img class="client-photo" src="clients/marc.jpg" alt="Marc" onerror="this.style.display='none'">
-          <span class="caption">Marc</span>
+          <span class="caption">Marc R.</span>
         </div>
-
-        <div class="logo-thumb">
-          <img class="client-photo" src="clients/yazid.jpg" alt="Yazid" onerror="this.style.display='none'">
-          <span class="caption">Yazid</span>
-        </div>
-
-        <div class="logo-thumb">
-          <img class="client-photo" src="clients/dominique.webp" alt="Dominique" onerror="this.style.display='none'">
-          <span class="caption">Dominique</span>
-        </div>
-      </div>
 
       <div class="testimonials" style="margin-top:16px">
         <article class="testimonial tile" data-animate>
-          <div class="stars" style="color:var(--accent-start)">★★★★★</div>
+          <div class="stars" style="color:var(--accent-start)">★★★★</div>
           <p class="muted">"NEXA RISE a structuré notre communication et augmenté nos ventes sociales."</p>
-          <div style="font-weight:800;margin-top:8px">— Yazid, KAFO</div>
+          <div style="font-weight:800;margin-top:8px">— Idrissa, AFRITEK </div>
         </article>
         <article class="testimonial tile" data-animate>
           <div class="stars" style="color:var(--accent-start)">★★★★★</div>
           <p class="muted">"Conception et exécution sobres, efficaces et mesurables."</p>
-          <div style="font-weight:800;margin-top:8px">— Aïcha, JOLI Boutique</div>
+          <div style="font-weight:800;margin-top:8px">— Marc, BTOP SARL </div>
         </article>
       </div>
     </section>
+
+
 
     <!-- SERVICES + PACKS (inchangés structurellement) -->
     <section id="services" class="section-grid tile" data-animate aria-labelledby="services-title">
@@ -535,7 +523,7 @@
     </section>
 
     <!-- PORTFOLIO / EQUIPE / CONTACT (unchanged structurally) -->
-    <section id="portfolio" class="tile" data-animate style="margin-top:22px">
+<!--   <section id="portfolio" class="tile" data-animate style="margin-top:22px">
       <h2 id="portfolio-title">Exemples récents</h2>
       <div class="portfolio-grid" id="portfolioGrid" aria-live="polite"></div>
     </section>
@@ -547,7 +535,7 @@
         <div class="member tile" data-animate><div class="avatar">AF</div><div class="name" style="font-weight:800">Aïcha Fall</div><div class="muted small">Design & Contenu</div></div>
         <div class="member tile" data-animate><div class="avatar">OM</div><div class="name" style="font-weight:800">Oumar Mbaye</div><div class="muted small">Paid & Performance</div></div>
       </div>
-    </section>
+    </section> --> 
 
     <section id="contact" class="tile" data-animate style="margin-top:22px">
       <h2 id="contact-title">Contactez-nous</h2>
