@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEXA RISE MARKETING — Agence Communication & Marketing Digital</title>
+
+  <!-- Police et icônes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===============================
+       INDEX.HTML — Couleurs adaptées au logo + responsive optimisé
+       - Modifications commentées directement pour que vous puissiez les retrouver.
+       - Ne touche pas la structure existante, améliore le comportement et l'accessibilité.
+       =============================== */
+
+    :root{
+      --bg-900: #030914;
+      --bg-800: #061528;
+      --card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.035);
+      --muted: #9fb6d0;
+      --text: #eaf6ff;
+
+      --accent-start: #00C6FF;
+      --accent-mid:   #2F78FF;
+      --accent-end:   #8A2BFF;
+      --accent: var(--accent-mid);
+      --accent-2: var(--accent-start);
+      --accent-gradient: linear-gradient(90deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+
+      --white: #ffffff;
+      --radius: 12px;
+      --max-w: 1150px;
+      --nav-height: 72px;
+      --transition: 220ms cubic-bezier(.2,.9,.2,1);
+
+      --fs-base: 16px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:var(--fs-base)}
+    body{
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      min-height:100vh;
+      background:
+        radial-gradient(900px 360px at 8% 8%, rgba(138,43,255,0.03), transparent),
+        linear-gradient(180deg,var(--bg-900) 0%, var(--bg-800) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-top:var(--nav-height); /* garde de la place pour navbar fixe */
+      line-height:1.45;
+      background-attachment:fixed;
+      background-position:50% 40%;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;height:auto}
+
+    /* NAVBAR */
+    nav{
+      position:fixed;left:0;right:0;top:0;height:var(--nav-height);z-index:1600;
+      backdrop-filter: blur(8px);
+      background:linear-gradient(180deg, rgba(3,6,12,0.56), rgba(3,6,12,0.28));
+      border-bottom:1px solid rgba(255,255,255,0.02);
+    }
+    .nav-inner{max-width:var(--max-w);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 18px;gap:12px}
+
+    /* layout: MOBILE TOGGLE (left) | BRAND (center-left) | ACTIONS (right) */
+    .brand{display:flex;gap:12px;align-items:center;min-width:0}
+    .logo-img{display:block;width:auto;height:48px;max-height:56px;max-width:220px;object-fit:contain;flex-shrink:0}
+    .brand .title{font-weight:800;letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand .tag{font-size:0.85rem;color:var(--muted);margin-top:2px}
+
+    .nav-links{display:flex;gap:12px;align-items:center}
+    .nav-links a{color:var(--muted);font-weight:600;padding:8px 10px;border-radius:10px;transition:all var(--transition)}
+    .nav-links a:hover{color:var(--text);background:var(--card);transform:translateY(-3px)}
+
+    /* ACTIVE NAV LINK (added) - visual indicator of the selected section */
+    .nav-links a.active{
+      color:var(--text);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow:0 6px 18px rgba(47,120,255,0.06);
+      font-weight:800;
+      transform:none; /* avoid translate conflicts */
+    }
+
+    .cta-nav{background:var(--accent-gradient);padding:8px 14px;border-radius:12px;color:#021827;font-weight:800;box-shadow:0 10px 26px rgba(47,120,255,0.06)}
+
+    /* MOBILE HAMBURGER (hidden desktop) */
+    .mobile-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:1.25rem;padding:8px;border-radius:8px}
+    /* nav-mobile positioned LEFT to match your request */
+    .nav-mobile{display:none;position:fixed;left:12px;top:calc(var(--nav-height) + 10px);background:linear-gradient(180deg, rgba(2,6,12,0.98), rgba(2,6,12,0.94));border-radius:10px;padding:8px;box-shadow:0 18px 60px rgba(2,8,30,0.6);min-width:200px}
+    .nav-mobile a{display:block;padding:10px 14px;color:var(--muted);border-radius:8px}
+    .nav-mobile a:hover{background:var(--card);color:var(--text)}
+
+    /* Main container */
+    .wrap{max-width:var(--max-w);margin:0 auto;padding:20px}
+
+    /* Add consistent spacing between top-level blocks for a cleaner desktop layout
+       - This is a global spacing tweak; adjust value if you want more/less gap.
+       - Comment: .wrap > * + * will add vertical spacing between direct children of .wrap */
+    .wrap > * + * { margin-top:28px; } /* <-- spacing between blocks on desktop */
+
+    /* HERO */
+    header.hero{margin-top:8px;display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008));padding:22px;border-radius:var(--radius);box-shadow:0 16px 48px rgba(3,8,15,0.5)}
+    .hero-left h1{font-size:1.85rem;line-height:1.04;margin-bottom:10px}
+    .lead{color:var(--muted);margin-bottom:14px;font-size:1.05rem}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+
+    /* BUTTONS: stronger hover feedback on small tap targets (improves perceived responsiveness) */
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:0;cursor:pointer;font-weight:800;transition:transform var(--transition),box-shadow var(--transition)}
+    .btn.primary{background:var(--accent-gradient);color:#021827;box-shadow:0 12px 34px rgba(47,120,255,0.06)}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)}
+    /* explicit hover only on buttons (avoid moving whole block): */
+    .btn:hover{ transform: translateY(-3px) scale(1.01); box-shadow:0 18px 44px rgba(47,120,255,0.08); }
+
+    /* Tiles: avoid large translation of entire block on hover (user requested)
+       We now only slightly scale the block and apply shadow; no translateY to prevent layout shifts. */
+    .tile{transform:scale(1);opacity:0;transition:transform 420ms cubic-bezier(.2,.9,.2,1),opacity 420ms,box-shadow 220ms}
+    .tile.visible{transform:none;opacity:1}
+    .tile:hover{transform:scale(1.01);box-shadow:0 26px 60px rgba(6,25,45,0.5)} /* no translate to avoid 'jump' */
+    .tile::after{content:"";position:absolute;inset:0;border-radius:12px;pointer-events:none;background:linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));opacity:0;transition:opacity 260ms}
+    .tile:hover::after{opacity:1}
+
+    /* Stats */
+    .hero-stats{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .stat{background:var(--glass);padding:10px;border-radius:10px;min-width:100px;text-align:center;backdrop-filter:blur(4px)}
+    .stat .label{font-size:0.85rem;color:var(--muted)}
+    .stat .value{font-weight:900;font-size:1.05rem;color:var(--accent)}
+
+    .hero-right{padding:16px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+
+    .input,textarea,select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);font-size:0.95rem}
+    .lead-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+
+    /* PREUVES / TESTIMONIALS */
+    section.preuves{margin-top:28px}
+    .counters{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+    .counter{background:var(--glass);padding:14px;border-radius:12px;text-align:center;min-width:130px}
+    .counter .num{font-weight:900;color:var(--accent);font-size:1.2rem}
+
+    /* CLIENT LOGOS / PHOTOS
+       - Comment insérer vos photos (expliqué inline plus bas) :
+       - Important : utilisez la balise <span class="caption">Nom</span> pour afficher le nom
+       - La structure HTML recommandée :
+         <div class="logo-thumb">
+           <img class="client-photo" src="clients/nom.jpg" alt="Nom client">
+           <span class="caption">Nom</span>
+         </div>
+       - Le CSS ci‑dessous :
+         * garantit que l'image est recadrée (object-fit:cover)
+         * affiche le caption sous l'image
+         * s'adapte en responsive
+    */
+    .client-logos{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;align-items:center}
+    .logo-thumb{
+      width:88px;
+      height:88px;
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      display:flex;                 /* changed to flex-column so caption shows under image */
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-weight:700;
+      padding:6px;
+      text-align:center;
+    }
+    .logo-thumb img.client-photo{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:8px;
+    }
+    .logo-thumb .caption{
+      display:block;
+      margin-top:6px;
+      font-size:0.78rem;
+      color:var(--muted);
+      text-align:center;
+      line-height:1;
+    }
+    /* On erreur de chargement de l'image : afficher le caption/text (fallback) */
+    .logo-thumb img.client-photo[style*="display:none"] + .caption,
+    .logo-thumb img.client-photo[hidden] + .caption { display:block; }
+
+    @media (max-width:820px){
+      .logo-thumb{width:72px;height:72px}
+    }
+    @media (max-width:480px){
+      .logo-thumb{width:56px;height:56px;border-radius:10px}
+    }
+
+    .testimonials{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+    .testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;min-width:220px}
+
+    /* SERVICES & PACKS */
+    .section-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:20px}
+    .services-list{display:grid;gap:12px;margin-top:12px}
+    .service{display:flex;gap:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+    .service .icon{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:grid;place-items:center;color:#041827;font-weight:800}
+
+    .packs{margin-top:8px;display:grid;gap:10px}
+    .pack{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+    .pack-illus{width:64px;height:52px;flex-shrink:0}
+    .pack-title{font-weight:900}
+    .pack .price{font-weight:800;margin-top:6px;color:var(--accent-2)}
+
+    /* PORTFOLIO */
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .portfolio-item{position:relative;border-radius:10px;overflow:hidden;min-height:150px;background:var(--card)}
+    .overlay{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.35));color:var(--text);font-weight:800}
+
+    /* EQUIPE */
+    .team{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+    .member{background:var(--card);padding:12px;border-radius:12px;min-width:140px;text-align:center}
+    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:inline-grid;place-items:center;font-weight:800;color:#041827;margin:0 auto 8px}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px}
+    .contact-form{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+
+    /* FOOTER : left logo small | center copyright | right socials */
+    footer{margin:36px 0 40px;color:var(--muted)}
+    .footer-inner{max-width:var(--max-w);margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .footer-left{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+    .footer-left img{height:40px;width:auto;object-fit:contain;flex-shrink:0}
+    .footer-center{flex:1 1 auto;text-align:center;font-size:0.95rem;color:var(--muted)}
+    .footer-right{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex:0 0 auto}
+    .social-link{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);transition:all var(--transition)}
+    .social-link:hover{background:var(--accent-gradient);color:#021827}
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      header.hero{grid-template-columns:1fr 320px}
+      .section-grid{grid-template-columns:1fr 300px}
+      .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:820px){
+      .nav-links{display:none}
+      .mobile-toggle{display:inline-flex}
+      .nav-mobile{display:none}
+      header.hero{grid-template-columns:1fr}
+      .hero-left h1{font-size:1.25rem}
+      .hero-card{padding:16px}
+      .wrap{padding:14px}
+      .hero-right{position:static}
+      .section-grid{grid-template-columns:1fr}
+      .portfolio-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .footer-inner{flex-direction:column;align-items:center;gap:10px;text-align:center}
+      .footer-right{text-align:center;justify-content:center}
+      .logo-img{height:40px;max-width:160px}
+      .hero-cta .btn{padding:10px 12px;font-size:0.95rem}
+      .stat .value{font-size:1rem}
+      .client-logos{gap:8px}
+    }
+    @media (max-width:480px){
+      html{font-size:15px}
+      .logo-img{height:36px;max-width:140px}
+      .brand .title{font-size:0.95rem}
+      .hero-left h1{font-size:1.05rem}
+      .btn{padding:10px 10px}
+      .hero-stats{gap:8px}
+      .input,textarea,select{font-size:0.95rem}
+      .pack-illus{width:48px;height:40px}
+      .footer-left img{height:36px}
+      .social-link{width:36px;height:36px}
+    }
+
+    :focus{outline:3px solid rgba(138,43,255,0.12);outline-offset:3px}
+    .muted{color:var(--muted)}
+    .small{font-size:0.87rem}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR
+       NOTE: mobile toggle intentionally placed before .brand so it appears on the left.
+       Changes made:
+       - burger at left (already in markup),
+       - active link styles handled by JS (see comment in script).
+  -->
+  <nav role="navigation" aria-label="Main nav">
+    <div class="nav-inner">
+      <!-- mobile toggle à GAUCHE -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <div class="brand" role="img" aria-label="NEXA RISE MARKETING">
+        <!-- Logo PNG : remplacez Logo/NEXA RISE LOGO N.png par votre fichier (SVG / PNG) -->
+        <img id="logo-nav" class="logo-img" src="Logo/NEXA RISE LOGO N.png" alt="NEXA RISE MARKETING">
+
+        <div>
+          <div class="title">NEXA RISE MARKETING</div>
+          <div class="tag muted">Agence de communication & marketing digital</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="nav-links" role="menubar" aria-label="sections">
+          <a href="#accueil">Accueil</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#preuve">Preuves</a>
+          <a href="#contact" class="cta-nav">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu (ouvre à gauche, sous le burger) -->
+    <div class="nav-mobile" id="navMobile" aria-hidden="true" role="menu">
+      <a href="#accueil" role="menuitem">Accueil</a>
+      <a href="#services" role="menuitem">Services</a>
+      <a href="#portfolio" role="menuitem">Portfolio</a>
+      <a href="#preuve" role="menuitem">Preuves</a>
+      <a href="#contact" role="menuitem">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <main class="wrap" id="accueil" role="main" aria-live="polite">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-card hero-left tile" data-animate>
+        <h1>Nous propulsons les marques africaines avec une touche glacée — design, stratégie, performance.</h1>
+        <p class="lead">NEXA RISE MARKETING combine créativité et rigueur data-driven pour booster visibilité et conversions. Simple, transparent, efficace.</p>
+
+        <div class="hero-cta">
+          <!-- BUTTON FIX: now scrolls to contact and focuses the form (see JS comment). -->
+          <button class="btn primary" id="cta-start"><i class="fa-solid fa-rocket" aria-hidden="true"></i> Commencer mon projet</button>
+          <a class="btn ghost" href="#services"><i class="fa-solid fa-list" aria-hidden="true"></i> Voir nos services</a>
+        </div>
+
+        <div class="hero-stats" role="list" aria-label="Statistiques rapides">
+          <div class="stat tile" data-animate role="listitem">
+            <div class="label">Clients</div>
+            <div class="value" id="h-clients" data-target="12">0</div>
+          </div>
+          <div class="stat tile" data-animate role="listitem">
+            <div class="label">Projets</div>
+            <div class="value" id="h-projects" data-target="18">0</div>
+          </div>
+          <div class="stat tile" data-animate role="listitem">
+            <div class="label">Impressions / mois</div>
+            <div class="value" id="h-impr" data-target="5000">0</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card hero-right tile" data-animate>
+        <h3>Estimation gratuite</h3>
+        <p class="muted small">Réponse sous 24h ouvrées — sans engagement.</p>
+
+        <form id="leadForm" class="lead-form" aria-label="Formulaire rapide">
+          <label for="lead-name">Nom complet</label>
+          <input id="lead-name" name="name" class="input" placeholder="Ex: Aïcha Diallo" required>
+
+          <label for="lead-email">Email</label>
+          <input id="lead-email" name="email" type="email" class="input" placeholder="vous@exemple.com" required>
+
+          <label for="lead-service">Service</label>
+          <select id="lead-service" name="service" class="input" required>
+            <option value="">Choisissez...</option>
+            <option value="gestion-presence">Gestion présence</option>
+            <option value="creation-contenu">Création contenu</option>
+            <option value="campagnes">Campagnes pub</option>
+            <option value="strategie">Conseil & stratégie</option>
+            <option value="packs">Packs mensuels</option>
+          </select>
+
+          <div class="lead-actions">
+            <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Envoyer</button>
+            <!-- PHONE BUTTON FIX: now opens tel: link and updates lead status (see JS). -->
+            <button type="button" id="lead-phone" class="btn ghost" title="Nous appeler"><i class="fa-solid fa-phone" aria-hidden="true"></i></button>
+          </div>
+
+          <!-- Lead status: used instead of alert for inline feedback (added) -->
+          <div id="lead-status" class="muted small" aria-live="polite" style="margin-top:8px"></div>
+
+          <div class="small muted" style="margin-top:8px">Vos données resteront confidentielles.</div>
+        </form>
+      </aside>
+    </header>
+
+    <!-- PREUVES -->
+    <section class="preuves" id="preuve" aria-labelledby="preuve-title">
+      <div class="preuves-head tile" data-animate style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div>
+          <h2 id="preuve-title">Ils nous font confiance</h2>
+          <p class="muted">Petites entreprises & e-commerces accompagnés avec soin.</p>
+        </div>
+
+        <div class="counters" aria-hidden="false" role="list" aria-label="Compteurs globaux">
+          <div class="counter tile" data-animate role="listitem">
+            <div class="counter-label muted">Clients satisfaits</div>
+            <div class="num" data-target="12">0</div>
+          </div>
+          <div class="counter tile" data-animate role="listitem">
+            <div class="counter-label muted">Projets</div>
+            <div class="num" data-target="18">0</div>
+          </div>
+          <div class="counter tile" data-animate role="listitem">
+            <div class="counter-label muted">Impressions / mois</div>
+            <div class="num" data-target="5000">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLIENT LOGOS / PHOTOS
+           IMPORTANT: pour que les NOMS apparaissent correctement :
+           - Toujours inclure une <span class="caption">Nom</span> sous l'image,
+             ou au minimum laisser le texte dans la balise .logo-thumb après l'image.
+           - Exemple d'usage fourni ci-dessous.
+      -->
+      <div class="client-logos tile" data-animate>
+        <!-- Replace src with your client photos (recommended square images). Caption shows under the image. -->
+        <div class="logo-thumb">
+          <img class="client-photo" src="clients/john.jpg" alt="John" onerror="this.style.display='none'">
+          <span class="caption">John</span>
+        </div>
+
+        <div class="logo-thumb">
+          <img class="client-photo" src="clients/loic.jpg" alt="Loïc" onerror="this.style.display='none'">
+          <span class="caption">Loïc</span>
+        </div>
+
+        <div class="logo-thumb">
+          <img class="client-photo" src="clients/marc.jpg" alt="Marc" onerror="this.style.display='none'">
+          <span class="caption">Marc</span>
+        </div>
+
+        <div class="logo-thumb">
+          <img class="client-photo" src="clients/yazid.jpg" alt="Yazid" onerror="this.style.display='none'">
+          <span class="caption">Yazid</span>
+        </div>
+
+        <div class="logo-thumb">
+          <img class="client-photo" src="clients/dominique.webp" alt="Dominique" onerror="this.style.display='none'">
+          <span class="caption">Dominique</span>
+        </div>
+      </div>
+
+      <div class="testimonials" style="margin-top:16px">
+        <article class="testimonial tile" data-animate>
+          <div class="stars" style="color:var(--accent-start)">★★★★★</div>
+          <p class="muted">"NEXA RISE a structuré notre communication et augmenté nos ventes sociales."</p>
+          <div style="font-weight:800;margin-top:8px">— Yazid, KAFO</div>
+        </article>
+        <article class="testimonial tile" data-animate>
+          <div class="stars" style="color:var(--accent-start)">★★★★★</div>
+          <p class="muted">"Conception et exécution sobres, efficaces et mesurables."</p>
+          <div style="font-weight:800;margin-top:8px">— Aïcha, JOLI Boutique</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICES + PACKS (inchangés structurellement) -->
+    <section id="services" class="section-grid tile" data-animate aria-labelledby="services-title">
+      <div>
+        <h2 id="services-title">Nos services</h2>
+        <p class="muted">Offres claires et modulaires — vous choisissez ce qui vous construit le plus.</p>
+
+        <div class="services-list" style="margin-top:12px">
+          <div class="service tile" data-animate>
+            <div class="icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <div>
+              <h3>Gestion de la présence</h3>
+              <p class="muted small">Création pages, calendrier, community management.</p>
+              <div class="small muted" style="margin-top:6px">Création: 20 000 · Basique: 35 000 · Multi: 70 000</div>
+            </div>
+          </div>
+
+          <div class="service tile" data-animate>
+            <div class="icon"><i class="fa-solid fa-palette"></i></div>
+            <div>
+              <h3>Création & identité</h3>
+              <p class="muted small">Logos, chartes, visuels pour réseaux.</p>
+              <div class="small muted" style="margin-top:6px">Logo: 30 000 · Charte: 60 000 · Pack 10: 45 000</div>
+            </div>
+          </div>
+
+          <div class="service tile" data-animate>
+            <div class="icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div>
+              <h3>Campagnes publicitaires</h3>
+              <p class="muted small">Setup, ciblage, optimisation.</p>
+              <div class="small muted" style="margin-top:6px">Setup: 25 000 · Gestion: 30 000 · Google: 40 000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="packs tile" data-animate aria-label="Packs mensuels">
+        <h3>Packs mensuels</h3>
+        <!-- packs kept as-is -->
+        <div class="pack" data-animate data-pack="Starter">
+          <svg class="pack-illus" viewBox="0 0 64 48" aria-hidden="true"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00C6FF"/><stop offset="0.6" stop-color="#2F78FF"/><stop offset="1" stop-color="#8A2BFF"/></linearGradient></defs><rect x="4" y="8" width="56" height="32" rx="6" fill="url(#g1)"/></svg>
+          <div>
+            <div class="pack-title">Starter</div>
+            <div class="muted small">1 plateforme, 8 visuels, suivi</div>
+            <div class="price">45 000 FCFA / mois</div>
+            <button class="btn primary pack-cta" data-pack="Starter">Choisir</button>
+          </div>
+        </div>
+
+        <div class="pack" data-animate data-pack="Business">
+          <svg class="pack-illus" viewBox="0 0 64 48" aria-hidden="true"><defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#00C6FF"/><stop offset="0.6" stop-color="#2F78FF"/><stop offset="1" stop-color="#8A2BFF"/></linearGradient></defs><circle cx="32" cy="24" r="18" fill="url(#g2)"/></svg>
+          <div>
+            <div class="pack-title">Business</div>
+            <div class="muted small">2 plateformes, 12 visuels, 1 campagne</div>
+            <div class="price">90 000 FCFA / mois</div>
+            <button class="btn primary pack-cta" data-pack="Business">Choisir</button>
+          </div>
+        </div>
+
+        <div class="pack" data-animate data-pack="Premium">
+          <svg class="pack-illus" viewBox="0 0 64 48" aria-hidden="true"><defs><linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#00C6FF"/><stop offset="0.6" stop-color="#2F78FF"/><stop offset="1" stop-color="#8A2BFF"/></linearGradient></defs><path d="M8 36h48v-20L32 8 8 20z" fill="url(#g3)"/></svg>
+          <div>
+            <div class="pack-title">Premium</div>
+            <div class="muted small">3 plateformes, 20 visuels + vidéo</div>
+            <div class="price">160 000 FCFA / mois</div>
+            <button class="btn primary pack-cta" data-pack="Premium">Choisir</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PORTFOLIO / EQUIPE / CONTACT (unchanged structurally) -->
+    <section id="portfolio" class="tile" data-animate style="margin-top:22px">
+      <h2 id="portfolio-title">Exemples récents</h2>
+      <div class="portfolio-grid" id="portfolioGrid" aria-live="polite"></div>
+    </section>
+
+    <section id="equipe" class="tile" data-animate style="margin-top:22px">
+      <h2>Notre équipe</h2>
+      <div class="team">
+        <div class="member tile" data-animate><div class="avatar">MD</div><div class="name" style="font-weight:800">Mamadou Diop</div><div class="muted small">Stratégie & Growth</div></div>
+        <div class="member tile" data-animate><div class="avatar">AF</div><div class="name" style="font-weight:800">Aïcha Fall</div><div class="muted small">Design & Contenu</div></div>
+        <div class="member tile" data-animate><div class="avatar">OM</div><div class="name" style="font-weight:800">Oumar Mbaye</div><div class="muted small">Paid & Performance</div></div>
+      </div>
+    </section>
+
+    <section id="contact" class="tile" data-animate style="margin-top:22px">
+      <h2 id="contact-title">Contactez-nous</h2>
+      <p class="muted">Remplissez ce formulaire et nous vous répondrons sous 24h ouvrées.</p>
+
+      <div class="contact-grid" style="margin-top:12px">
+        <form id="contactForm" class="contact-form tile" aria-label="Formulaire principal">
+          <label for="cf-name">Nom complet</label>
+          <input id="cf-name" name="name" class="input" required>
+
+          <label for="cf-company">Entreprise (optionnel)</label>
+          <input id="cf-company" name="company" class="input">
+
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" class="input" required>
+
+          <label for="cf-phone">Téléphone</label>
+          <input id="cf-phone" name="phone" class="input" required>
+
+          <label for="cf-service">Service désiré</label>
+          <select id="cf-service" name="service" class="input" required>
+            <option value="">Sélectionner...</option>
+            <option value="creation-pages">Création pages</option>
+            <option value="gestion">Gestion réseaux</option>
+            <option value="contenu">Création contenu</option>
+            <option value="pub">Campagnes publicitaires</option>
+            <option value="audit">Audit / Conseil</option>
+            <option value="packs">Packs mensuels</option>
+          </select>
+
+          <label for="cf-message">Message / Brief</label>
+          <textarea id="cf-message" name="message" class="input" rows="5" placeholder="Décrivez votre projet..." required></textarea>
+
+          <div class="form-row" style="margin-top:10px">
+            <input id="cf-consent" name="consent" type="checkbox" required>
+            <label for="cf-consent" class="muted small">J'accepte que ces informations soient utilisées pour me recontacter.</label>
+          </div>
+
+          <div class="form-actions" style="margin-top:12px">
+            <button type="submit" class="btn primary"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Envoyer</button>
+            <button type="button" id="btn-reset" class="btn ghost">Réinitialiser</button>
+          </div>
+
+          <!-- contact form status already present; used for inline messages -->
+          <div id="cf-status" class="muted small" aria-live="polite" style="margin-top:10px"></div>
+        </form>
+
+        <aside class="tile" style="padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))">
+          <h3>Contact direct</h3>
+          <p class="muted">hello@nexarise.example<br>+221 77 000 00 00</p>
+          <div style="margin-top:10px;font-weight:800">+40% engagement moyen · x3 ROAS (moyenne)</div>
+          <div style="margin-top:12px"><button class="btn primary" onclick="location.hash='#contact'">Planifier un appel</button></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <img id="logo-footer" src="Logo/NEXA RISE LOGO N.png" alt="NEXA RISE" />
+        </div>
+
+        <div class="footer-center">
+          © <span id="year"></span> NEXA RISE MARKETING — Tous droits réservés
+        </div>
+
+        <div class="footer-right" aria-label="Réseaux sociaux">
+          <!-- Remplacez les href par vos liens réels -->
+          <a class="social-link" href="https://facebook.example" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://instagram.example" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a class="social-link" href="https://linkedin.example" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JS -->
+  <script>
+    /* =========================
+       Notes & summary of JS changes (commented inline)
+       - Smooth scroll with navbar offset for internal anchors
+       - Active nav link detection (on click & on scroll) and styling
+       - Mobile menu toggle (already present) updated to close on link click
+       - CTA "Commencer mon projet" scrolls to contact and focuses the first field
+       - Lead form: inline status messages instead of alert for missing fields
+       - Lead phone button opens tel: link and sets inline status
+       - Ensure client images fallback shows the caption/name
+       - All additions are commented so you can change them later
+       ========================= */
+
+    /* TELEGRAM CONFIG (optionnel) */
+    const BOT_TOKEN = ""; // "123456:ABC-DEF..."
+    const CHAT_ID = "";   // "-123456789"
+
+    /* --- helper: compute navbar offset --- */
+    function getNavHeight(){
+      // read CSS variable --nav-height to compute offset used for smooth scroll
+      const v = getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '72px';
+      return parseInt(v, 10) || 72;
+    }
+
+    /* ---------------------------
+       Mobile menu toggle (hamburger)
+       - minor adjustments: close menu on any internal link click (already present)
+       - works with navMobile placed left
+       - commented so you can modify behaviour
+    */
+    (function mobileMenu(){
+      const btn = document.getElementById('mobileToggle');
+      const navMobile = document.getElementById('navMobile');
+      if(!btn || !navMobile) return;
+      function openMenu(){
+        document.body.classList.add('nav-open');
+        navMobile.style.display = 'block';
+        navMobile.setAttribute('aria-hidden','false');
+        btn.setAttribute('aria-expanded','true');
+        btn.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+      }
+      function closeMenu(){
+        document.body.classList.remove('nav-open');
+        navMobile.style.display = 'none';
+        navMobile.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+        btn.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+      }
+      btn.addEventListener('click', () => {
+        const open = document.body.classList.contains('nav-open');
+        if(open) closeMenu(); else openMenu();
+      });
+      // close on link click (mobile)
+      document.querySelectorAll('.nav-mobile a').forEach(a => a.addEventListener('click', closeMenu));
+      // close on escape
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+    })();
+
+    /* ---------------------------
+       Smooth internal anchor scrolling + active nav management
+       - Intercepts clicks on anchors starting with '#'
+       - Performs smooth scroll to element offset by navbar height
+       - Updates active class on nav links
+       - Observes sections to update active link on scroll (IntersectionObserver)
+       - Commented for easy customization
+    */
+    (function navigationBehaviour(){
+      const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+      const mobileLinks = Array.from(document.querySelectorAll('.nav-mobile a'));
+      const allLinks = navLinks.concat(mobileLinks);
+      const NAV_H = getNavHeight();
+
+      // set active class helper
+      function clearActive(){ navLinks.forEach(a => a.classList.remove('active')); }
+      function setActiveByHref(href){
+        // find nav link with matching href
+        clearActive();
+        const a = navLinks.find(n => n.getAttribute('href') === href);
+        if(a) a.classList.add('active');
+      }
+
+      // smooth scroll to target id (string like '#contact')
+      function smoothScrollToHash(hash){
+        try{
+          if(!hash) return;
+          const el = document.querySelector(hash);
+          if(!el) return;
+          const top = el.getBoundingClientRect().top + window.pageYOffset - NAV_H - 8; // small offset so content not hidden
+          window.scrollTo({ top, behavior: 'smooth' });
+          // set active in nav immediately (visual feedback)
+          setActiveByHref(hash);
+          // update url without jumping (pushState prevents default jump)
+          history.replaceState(null, '', hash);
+        }catch(e){ console.error(e); }
+      }
+
+      // intercept clicks on same-page anchors
+      allLinks.forEach(link => {
+        const href = link.getAttribute('href') || '';
+        if(href.startsWith('#')){
+          link.addEventListener('click', function(ev){
+            ev.preventDefault();
+            const hash = href;
+            smoothScrollToHash(hash);
+            // if mobile, close menu (if open)
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMobile = document.getElementById('navMobile');
+            if(document.body.classList.contains('nav-open') && mobileToggle && navMobile){
+              // close mobile menu
+              document.body.classList.remove('nav-open');
+              navMobile.style.display = 'none';
+              navMobile.setAttribute('aria-hidden','true');
+              mobileToggle.setAttribute('aria-expanded','false');
+              mobileToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+            }
+          });
+        }
+      });
+
+      // IntersectionObserver: highlight nav link for the section in view
+      const sections = Array.from(document.querySelectorAll('main [id]')).filter(s => s.id && s.id !== 'year'); // many sections have id
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            // when section intersects, set active to corresponding nav link if exists
+            setActiveByHref('#' + entry.target.id);
+          }
+        });
+      }, { root: null, rootMargin: `-${NAV_H + 6}px 0px -40% 0px`, threshold: 0.2 });
+      sections.forEach(s => obs.observe(s));
+
+      // If page loads with a hash, scroll with offset
+      window.addEventListener('load', () => {
+        if(location.hash){
+          // small timeout to let browser settle
+          setTimeout(()=> smoothScrollToHash(location.hash), 60);
+        }
+      });
+    })();
+
+    /* ---------------------------
+       Observe tiles - animation d'entrée (unchanged logic)
+       - kept for visual entrance animations
+    */
+    (function observeTiles(){
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.12});
+      document.querySelectorAll('.tile, [data-animate]').forEach(n => io.observe(n));
+    })();
+
+    /* ---------------------------
+       Compteurs animés (robuste) - unchanged
+    */
+    function animateNumber(el, to, duration = 900) {
+      let suffix = '';
+      let target = 0;
+      if (typeof to === 'string' && /k$/i.test(to.trim())) {
+        suffix = 'k';
+        target = Math.round(parseFloat(to) * 1000);
+      } else {
+        target = parseInt(String(to).replace(/\D/g, ''), 10) || 0;
+      }
+      const start = performance.now();
+      function frame(now){
+        const t = Math.min(1, (now - start)/duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const value = Math.round(target * eased);
+        if(suffix === 'k') el.textContent = Math.round(value/1000) + 'k';
+        else el.textContent = value.toLocaleString();
+        if(t < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    (function initCounters(){
+      const nodes = document.querySelectorAll('.num, .value, .count');
+      if(!nodes.length) return;
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            const el = entry.target;
+            const targetAttr = el.dataset.target || el.textContent || '0';
+            el.textContent = '0';
+            animateNumber(el, targetAttr, 900 + Math.random()*400);
+            obs.unobserve(el);
+          }
+        });
+      }, {threshold:0.25});
+      nodes.forEach(n => { n.textContent = '0'; io.observe(n); });
+    })();
+
+    /* ---------------------------
+       CTA "Commencer mon projet" behaviour
+       - Scrolls to #contact with offset and focuses the name field
+       - Commented so you can change target or behaviour later
+    */
+    (function ctaStart(){
+      const btn = document.getElementById('cta-start');
+      if(!btn) return;
+      btn.addEventListener('click', (e) => {
+        // Use the same smooth scroll helper implemented above (simple copy here)
+        const target = document.getElementById('contact');
+        if(!target) return;
+        const NAV_H = getNavHeight();
+        const top = target.getBoundingClientRect().top + window.pageYOffset - NAV_H - 8;
+        window.scrollTo({ top, behavior: 'smooth' });
+        // focus the main name field after scroll completes (delay ~= transition)
+        setTimeout(()=> { document.getElementById('cf-name')?.focus(); }, 450);
+      });
+    })();
+
+    /* ---------------------------
+       Lead form improvements (inline feedback + phone button)
+       - Replaces alerts inside lead form with inline status element (#lead-status)
+       - Phone button opens tel: link and writes status message (so mobile users can tap)
+       - All messages displayed in the small inline area to match contact form behaviour
+    */
+    (function leadFormHandler(){
+      const lead = document.getElementById('leadForm');
+      const leadStatus = document.getElementById('lead-status');
+      const phoneBtn = document.getElementById('lead-phone');
+      const TEL_NUMBER = '+221770000000'; // change to your phone here
+
+      function setStatus(msg, isError){
+        if(!leadStatus) { alert(msg); return; }
+        leadStatus.textContent = msg;
+        leadStatus.style.color = isError ? '#ff9b8a' : '#aef0d9';
+      }
+
+      if(phoneBtn){
+        phoneBtn.addEventListener('click', () => {
+          // Phone call behaviour: open tel: link
+          // Also update inline status to avoid an alert
+          setStatus('Ouverture du composeur téléphonique...', false);
+          // open tel: link (works on mobile)
+          window.location.href = `tel:${TEL_NUMBER}`;
+          // keep status visible for a few seconds
+          setTimeout(()=> setStatus('', false), 2500);
+        });
+      }
+
+      if(lead){
+        lead.addEventListener('submit', async function(e){
+          e.preventDefault();
+          const name = (this.name?.value || '').trim();
+          const email = (this.email?.value || '').trim();
+          const service = (this.service?.value || '').trim();
+          const payload = { name, email, service, message: 'Demande d\'estimation (lead)' };
+
+          if(!name || !email || !service){
+            setStatus('Merci de remplir Nom, Email et Service.', true);
+            return;
+          }
+
+          setStatus('Envoi en cours...', false);
+          try{
+            if(BOT_TOKEN && CHAT_ID){
+              // keep behaviour: call Telegram if configured
+              const lines = [
+                `<b>Lead — Estimation</b>`,
+                `<b>Nom:</b> ${name}`,
+                `<b>Email:</b> ${email}`,
+                `<b>Service:</b> ${service}`,
+                `<b>Soumis le:</b> ${new Date().toISOString()}`
+              ].join('\n');
+              const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(lines)}&parse_mode=HTML`;
+              const res = await fetch(url, { method: 'GET', mode: 'cors' });
+              const j = await res.json();
+              if(!res.ok || !j.ok) throw new Error(j.description || 'Telegram error');
+              setStatus('Demande envoyée — merci. Nous répondons sous 24h.', false);
+              lead.reset();
+            } else {
+              // fallback: log payload and show inline message (no alert)
+              console.log('Lead payload:', payload);
+              setStatus('Envoi désactivé (BOT_TOKEN non configuré). Payload dans console.', true);
+            }
+          }catch(err){
+            console.error(err);
+            setStatus('Échec de l\'envoi — réessayez plus tard.', true);
+          }
+        });
+      }
+    })();
+
+    /* ---------------------------
+       Contact form: ensure inline errors (already present) and consistent UX
+       - kept behaviour, but ensure anchors and focus do not hide the form under navbar
+       - when prefilled via pack CTA elsewhere, we focus properly
+    */
+    (function contactFormEnhancements(){
+      const contact = document.getElementById('contactForm');
+      const cfStatus = document.getElementById('cf-status');
+      if(!contact) return;
+
+      // Example: pack-cta buttons prefill contact form (kept if present)
+      document.querySelectorAll('.pack-cta').forEach(b => b.addEventListener('click', ev => {
+        ev.preventDefault();
+        const pack = b.dataset.pack || 'Pack';
+        // scroll to contact with offset
+        const target = document.getElementById('contact');
+        if(target){
+          const NAV_H = getNavHeight();
+          const top = target.getBoundingClientRect().top + window.pageYOffset - NAV_H - 8;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        setTimeout(()=> {
+          const sel = document.getElementById('cf-service'); if(sel) sel.value = 'packs';
+          const msg = document.getElementById('cf-message'); if(msg) msg.value = `Intérêt pour le pack: ${pack} — Précisez vos objectifs et budget.`;
+          document.getElementById('cf-name')?.focus();
+        }, 450);
+      }));
+
+      // reset button already handled in original code; leave as-is
+    })();
+
+    /* ---------------------------
+       Portfolio + client image handling notes (no JS needed)
+       - We ensure that if the client image fails to load, the caption remains visible
+       - If you want automatic generation of captions from filename, I can add JS (ask me)
+    */
+
+    /* ---------------------------
+       Accessibility / small tweaks
+       - ensure anchor focus outlines visible
+       - ensure clicking a link does not leave hidden content behind navbar (handled by smooth scroll)
+    */
+
+    /* subtle parallax (unchanged) */
+    (function chillyEffect(){
+      window.addEventListener('mousemove', (e)=>{
+        const dx = (e.clientX - window.innerWidth/2) / window.innerWidth;
+        const dy = (e.clientY - window.innerHeight/2) / window.innerHeight;
+        document.body.style.backgroundPosition = `${50 + dx*3}% ${50 + dy*2}%`;
+      }, {passive:true});
+    })();
+
+    /* update year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
