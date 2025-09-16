@@ -59,7 +59,8 @@
     }
 
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;height:auto}
+    img{max-width:80%;display:block;height:auto}
+
 
     /* NAVBAR */
     nav{
@@ -109,7 +110,7 @@
     /* HERO */
     header.hero{margin-top:8px;display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008));padding:22px;border-radius:var(--radius);box-shadow:0 16px 48px rgba(3,8,15,0.5)}
-    .hero-left h1{font-size:1.85rem;line-height:1.04;margin-bottom:10px}
+    .hero-left h1{font-size:2.5rem;line-height:1.04;margin-bottom:10px}
     .lead{color:var(--muted);margin-bottom:14px;font-size:1.05rem}
     .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
 
@@ -204,16 +205,16 @@
     .testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;min-width:220px}
 
     /* SERVICES & PACKS */
-    .section-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:90px}
-    .services-list{display:grid;gap:18px;margin-top:15px}
-    .service{display:flex;gap:17px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
+    .section-grid{display:grid;grid-template-columns:1fr 340px;gap:25px;align-items:start;margin-top:90px}
+    .services-list{display:grid;gap:25px;margin-top:15px}
+    .service{display:flex;gap:25px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
     .service .icon{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:grid;place-items:center;color:#041827;font-weight:800}
 
-    .packs{margin-top:8px;display:grid;gap:10px}
+    .packs{margin-top:12px;display:grid;gap:10px}
     .pack{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
     .pack-illus{width:64px;height:52px;flex-shrink:0}
     .pack-title{font-weight:900}
-    .pack .price{font-weight:800;margin-top:6px;color:var(--accent-2)}
+    .pack .price{font-weight:800;margin-top:6px;margin-bottom:12px; color:var(--accent-2)}
 
     /* PORTFOLIO */
     .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
@@ -226,7 +227,7 @@
     .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:inline-grid;place-items:center;font-weight:800;color:#041827;margin:0 auto 8px}
 
     /* CONTACT */
-    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px}
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:25px;margin-top:20px}
     .contact-form{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))}
 
     /* FOOTER : left logo small | center copyright | right socials */
@@ -250,7 +251,7 @@
       .mobile-toggle{display:inline-flex}
       .nav-mobile{display:none}
       header.hero{grid-template-columns:1fr}
-      .hero-left h1{font-size:1.25rem}
+      .hero-left h1{font-size:1.55rem}
       .hero-card{padding:16px}
       .wrap{padding:14px}
       .hero-right{position:static}
@@ -268,7 +269,7 @@
       html{font-size:15px}
       .logo-img{height:36px;max-width:140px}
       .brand .title{font-size:0.95rem}
-      .hero-left h1{font-size:1.05rem}
+      .hero-left h1{font-size:1.55rem}
       .btn{padding:10px 10px}
       .hero-stats{gap:10px}
       .input,textarea,select{font-size:0.95rem}
@@ -356,9 +357,10 @@
       </div>
 
       <aside class="hero-card hero-right tile" data-animate>
-        <h3>Estimation gratuite</h3>
+        <h2>Estimation gratuite</h2>
+        <br>
         <p class="muted small">Réponse sous 24h ouvrées — sans engagement.</p>
-
+        <br>
         <form id="leadForm" class="lead-form" aria-label="Formulaire rapide">
           <label for="lead-name">Nom complet</label>
           <input id="lead-name" name="name" class="input" placeholder="Ex: Aïcha Diallo" required>
@@ -379,7 +381,7 @@
           <div class="lead-actions">
             <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Envoyer</button>
             <!-- PHONE BUTTON FIX: now opens tel: link and updates lead status (see JS). -->
-            <button type="button" id="lead-phone" class="btn ghost" title="Nous appeler"><i class="fa-solid fa-phone" aria-hidden="true"></i></button>
+            <button type="button" id="lead-phone" class="btn ghost" title="Nous appeler"><i class="fa-solid fa-phone" aria-hidden="true"> Appeler </i></button>
           </div>
 
           <!-- Lead status: used instead of alert for inline feedback (added) -->
@@ -415,7 +417,7 @@
              ou au minimum laisser le texte dans la balise .logo-thumb après l'image.
            - Exemple d'usage fourni ci-dessous.
       -->
-           <br> <h1>Ils nous ont fait confiance</h1>
+           <br> <h2>Ils nous ont fait confiance</h2>
            <br>
       <div class="client-logos tile" data-animate>
        
@@ -455,6 +457,7 @@
     <section id="services" class="section-grid tile" data-animate aria-labelledby="services-title">
       <div>
         <h2 id="services-title">Nos services</h2>
+        <br>
         <p class="muted">Offres claires et modulaires — vous choisissez ce qui vous construit le plus.</p>
 
         <div class="services-list" style="margin-top:12px">
@@ -488,7 +491,7 @@
       </div>
 
       <aside class="packs tile" data-animate aria-label="Packs mensuels">
-        <h3>Packs mensuels</h3>
+        <h2>Packs mensuels</h2>
         <!-- packs kept as-is -->
         <div class="pack" data-animate data-pack="Starter">
           <svg class="pack-illus" viewBox="0 0 64 48" aria-hidden="true"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00C6FF"/><stop offset="0.6" stop-color="#2F78FF"/><stop offset="1" stop-color="#8A2BFF"/></linearGradient></defs><rect x="4" y="8" width="56" height="32" rx="6" fill="url(#g1)"/></svg>
@@ -537,11 +540,11 @@
       </div>
     </section> --> 
 
-    <section id="contact" class="tile" data-animate style="margin-top:22px">
+    <section id="contact" class="tile" data-animate style="margin-top:30px">
       <h2 id="contact-title">Contactez-nous</h2>
       <p class="muted">Remplissez ce formulaire et nous vous répondrons sous 24h ouvrées.</p>
 
-      <div class="contact-grid" style="margin-top:12px">
+      <div class="contact-grid" style="margin-top:20px">
         <form id="contactForm" class="contact-form tile" aria-label="Formulaire principal">
           <label for="cf-name">Nom complet</label>
           <input id="cf-name" name="name" class="input" required>
@@ -585,8 +588,9 @@
 
         <aside class="tile" style="padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00))">
           <h3>Contact direct</h3>
+          <br>
           <p class="muted">hello@nexarise.example<br>+221 77 000 00 00</p>
-          <div style="margin-top:10px;font-weight:800">+40% engagement moyen · x3 ROAS (moyenne)</div>
+          <div style="margin-top:15px;font-weight:800">+40% Engagement moyen · x3 ROAS (Moyenne)</div>
           <div style="margin-top:12px"><button class="btn primary" onclick="location.hash='#contact'">Planifier un appel</button></div>
         </aside>
       </div>
